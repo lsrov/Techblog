@@ -1,0 +1,544 @@
+:root {
+    --primary-green: #68A32D; /* Verde mais claro */
+    --dark-green: #2a4a27; /* Verde escuro */
+    --light-green: #eef3ee;
+    --dark-text: #333;
+    --light-text: #555;
+    --border-color: #eee; /* Cor da borda */
+    
+    --serif-font: 'Lora', serif; /* Título */
+    --sans-serif-font: 'Roboto', sans-serif; /* Texto */
+
+}
+
+* { /* Tira as margens e deixa o padding padrão */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { /* Estilo do corpo do site */
+    font-family: var(--sans-serif-font);
+    color: var(--dark-text);
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+a { /* Para tirar o sublinhado nas partes que tem link */
+    text-decoration: none;
+    color: inherit;
+}
+
+img { /* Estilo das imagens */
+    max-width: 100%;
+    display: block;
+}
+
+.container { /* O que usar esse container, vai ser centralizado */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.cta-button { /* Botão "Começar a ler" */
+    display: inline-block;
+    background-color: var(--primary-green);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover { /* Quando eu passo o mouse em cima, a cor muda */
+    background-color: #5a9a54;
+}
+
+.cta-button.full-width { /* Um botão que ocupa toda a largura da página */
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+}
+
+
+.header { /* Estilo do cabeçalho */
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header .container { /* Só para o conteúdo não ficar mais largo */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.header-action-icon {
+    display: flex;
+    align-items: center;
+}
+
+.header-login-link {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--primary-green);
+    transition: color 0.3s;
+}
+
+.header-logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.header-logout-button:hover svg path {
+    stroke: var(--primary-green); /* Muda a cor do ícone quando passa o mouse em cima */
+}
+
+
+.hero-container { /* Container da seção principal da página */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+}
+
+.hero-title {
+    font-family: var(--serif-font);
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.hero-container .cta-button {
+    border-radius: 14px;
+}
+
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-title {
+    font-family: var(--serif-font);
+    color: var(--dark-green);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--light-green);
+    border-radius: 6px;
+}
+
+/* Página de artigos */
+.main-content {
+    padding: 40px 0;
+}
+
+.article-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.article-list-header h1 {
+    font-family: var(--serif-font);
+    font-size: 2.5rem;
+    color: var(--dark-green);
+}
+
+.filter-section {
+    margin-bottom: 2rem;
+}
+
+.tags-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background-color: #f5f5f5;
+    color: var(--light-text);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tag:hover, .tag.active {
+    background-color: var(--dark-text);
+    color: #fff;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--light-green);
+    border-radius: 6px;
+}
+
+.article-list-new {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.article-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.article-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+.article-item-content {
+    flex: 1;
+}
+
+.article-item-title {
+    font-family: var(--serif-font);
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.article-item-description {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin-bottom: 0.75rem;
+}
+
+.article-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.article-item-tag {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.article-item-actions {
+    font-size: 1.25rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 3rem;
+}
+
+.page-number {
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.page-number.active {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    font-weight: 500;
+}
+
+/* Manipulação dos artigos */
+.form-container {
+    padding: 60px 0;
+}
+
+.form-box {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-title {
+    font-family: var(--serif-font);
+    color: var(--dark-green);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea { /* Tem o mesmo estilo, só reaproveitei */
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: var(--sans-serif-font);
+    border: none;
+    background-color: var(--light-green);
+    border-radius: 6px;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+/* Erro */
+.form-error,
+.login-error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    border: 1px solid #D8000C;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Comentários e Artigo aberto */
+.article-detail-container {
+    padding: 40px 0;
+}
+
+.article-full {
+    margin-bottom: 3rem;
+}
+
+.article-full-title {
+    font-family: var(--serif-font);
+    font-size: 3rem;
+    color: var(--dark-green);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.article-full-meta {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+}
+.article-full-meta .author-name {
+    font-weight: 500;
+    color: var(--dark-text);
+}
+
+.article-full-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    background-color: #f0f0f0;
+}
+
+.article-full-content {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--dark-text);
+}
+
+.comments-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+.comments-title {
+    font-family: var(--serif-font);
+    font-size: 1.75rem;
+    color: var(--dark-green);
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo para formulário de comentário */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.comment-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: var(--sans-serif-font);
+    border: none;
+    background-color: var(--light-green);
+    border-radius: 6px;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 80px;
+}
+.comment-form button {
+    align-self: flex-start;
+}
+
+.comment-form-disabled {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Erro no formulário */
+.form-error-inline {
+    color: #D8000C;
+    font-size: 0.9rem;
+    margin-top: -0.5rem; /* Uso rem por ser uma unidade relativa e é melhor na responsividade*/
+}
+
+.comment-form-disabled textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: var(--sans-serif-font);
+    border: none;
+    background-color: var(--light-green);
+    border-radius: 6px;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 80px;
+}
+.comment-form-disabled button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    align-self: flex-start;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comment-card {
+    display: flex;
+    gap: 1rem;
+}
+
+.comment-author-img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.comment-author-name {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.comment-date {
+    font-size: 0.85rem;
+    color: var(--light-text);
+}
+
+.comment-text {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Formulário de edição */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Botão de salvar um pouco maior */
+.form-actions .cta-button {
+    flex: 1;
+    background-color: var(--primary-green);
+}
+
+/* Botão de excluir é menor e à direita */
+.cta-button-delete {
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: transparent;
+    color: #D8000C;
+    border: 1px solid #D8000C;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button-delete:hover {
+    background-color: #D8000C;
+    color: #fff;
+}
