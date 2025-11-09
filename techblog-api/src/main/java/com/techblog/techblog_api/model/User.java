@@ -32,7 +32,7 @@ public class User {
     private String email;
 
     // Senha do usuário
-    private String password; // Mesmo que esteja em String, vai virar hash
+    private String password; // Mesmo que esteja em String, vai virar hash e não pode ir pro bd
 
     // Lista de artigos que o usuário escreveu
     @OneToMany(mappedBy = "author") // Um usuário pode ter muitos artigos

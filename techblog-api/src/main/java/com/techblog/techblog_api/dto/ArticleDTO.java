@@ -31,6 +31,7 @@ public class ArticleDTO {
 
     // Método que converte um Article (entidade) para ArticleDTO
     // É static porque não precisa de uma instância de ArticleDTO pra funcionar
+    // Instância é um objeto criado da classe. Mas aqui só quero transformar dados
     public static ArticleDTO fromEntity(Article article, boolean canEdit) {
         // Cria um novo ArticleDTO
         ArticleDTO dto = new ArticleDTO();

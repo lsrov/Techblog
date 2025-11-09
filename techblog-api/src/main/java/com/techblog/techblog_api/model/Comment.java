@@ -34,6 +34,7 @@ public class Comment {
     private LocalDateTime createdAt;
 
     // O artigo que recebeu o comentário
+    // Nesse caso, ManyToOne não precisa dessa ligação intermediária
     @ManyToOne // Um artigo pode ter vários comentários
     @JoinColumn(name = "article_id", nullable = false)
     @ToString.Exclude // Só pra evitar os erros anteriores no Lombok

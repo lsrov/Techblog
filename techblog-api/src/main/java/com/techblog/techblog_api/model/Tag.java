@@ -32,7 +32,8 @@ public class Tag {
     @ManyToMany(mappedBy = "tags") // Uma tag pode estar em vários artigos
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonIgnore // Não manda pro frontend
+
+    @JsonIgnore // Não precisa buscar todos os artigos, faz uma consulta específica e não joga pro JSON
     private Set<Article> articles; // Usa Set pra não ter artigo repetido
 
 }

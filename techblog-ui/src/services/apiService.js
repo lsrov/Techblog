@@ -28,6 +28,7 @@ export const apiFetch = async (endpoint, options = {}) => { // Serve para fazer 
         });
 
         // Se der erro de autorização, desloga o usuário
+        // Isso estava acontecendo quando o software não conseguia carregar os comentários, por exemplo. Não sei porquê
         if ((response.status === 401 || response.status === 403) && endpoint !== '/auth/login') {
             console.warn('Erro de autorização. Deslogando...');
             localStorage.removeItem('authToken');

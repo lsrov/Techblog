@@ -13,7 +13,7 @@ function ArticleListItem({ article }) {
     <div className="article-list-item">
       {/* Imagem do artigo */}
       <img 
-        src={article.imageUrl || 'https://via.placeholder.com/80x80?text=Img'} 
+        src={article.imageUrl || 'https://via.placeholder.com/80x80?text=Img'} // Ou põe a imagem ou o placeholder
         alt={article.title} 
         className="article-item-image" 
       />

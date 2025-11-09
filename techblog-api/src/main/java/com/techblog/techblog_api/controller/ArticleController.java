@@ -79,7 +79,7 @@ public class ArticleController {
                     // Converte para DTO com a informação se pode editar
                     return ArticleDTO.fromEntity(article, canEdit);
                 })
-                .collect(Collectors.toList()); // Transforma o stream de volta em lista
+                .collect(Collectors.toList()); // Transforma o stream (serve para processar arrays e listas) de volta em lista
     }
     
     // Busca um artigo específico pelo ID

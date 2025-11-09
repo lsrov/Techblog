@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; //Só para saber a página atual
 import { isLoggedIn } from '../services/apiService';
 
-// Desenho do botão de sair
+// Desenho do botão de sair depois que já está logado. Não precisa usar png ou jpg, usa um formato de vetor
 function LogoutIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,9 @@ function LogoutIcon() {
 export function Header() {
   // Para pegar informações sobre a página atual
   const location = useLocation();
+  // Para navegar entre as páginas
   const navigate = useNavigate();
+  // Para saber se o usuário está logado
   const userIsLoggedIn = isLoggedIn();
 
   // Para verificar em qual página estamos
@@ -23,7 +25,7 @@ export function Header() {
 
   // Função que faz o logout
   const handleLogout = () => {
-    localStorage.removeItem('authToken'); // Remove o token de login
+    localStorage.removeItem('authToken'); // Remove o token de login; oposto do AuthController
     navigate('/login'); // Manda pra página de login
   };
 

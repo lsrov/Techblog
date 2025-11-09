@@ -30,7 +30,7 @@ public class JwtUtil {
                    .setSubject(username) // Username do usuário
                    .setIssuedAt(new Date(System.currentTimeMillis())) // Quando foi gerado
                    .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // Quando expira
-                   .signWith(getSigningKey(), SignatureAlgorithm.HS256) // Gera assinatura com uma chave secreta
+                   .signWith(getSigningKey(), SignatureAlgorithm.HS256) // Gera assinatura (método SHA256) com uma chave secreta
                    .compact(); // Transforma tudo em uma string
     }
 
@@ -58,7 +58,10 @@ public class JwtUtil {
     }
 
     // Método genérico pra pegar qualquer informação do token
-    // Usa um conceito chamado "Function" do Java 8+
+    // Usa um conceito chamado "Function" do Java 8+, que já vi em Kotlin
+    // Essa Function <T, R> basicamente me ajuda a diminuir código. Se eu fosse fazer
+        // "getUsernameFromToken" e outros, teria que ficar chamando o "getAllClaimsFromToken" toda
+        // hora. Aí, com isso, só preciso passar a função "getClaimFromToken" e dizer o que quero pegar
     private <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
     // Estudar mais sobre Function<T,R>
         final Claims claims = getAllClaimsFromToken(token);

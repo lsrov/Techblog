@@ -6,7 +6,7 @@ import { isLoggedIn } from '../services/apiService';
 export function ProtectedRoute() {
     // O usuário está logado?
     if (isLoggedIn()) {
-        // Se tiver logado, deixa passar pra página
+        // Se tiver logado, deixa passar pra página filho que tem que mostrar
         return <Outlet />;
     } else {
         // Senão, manda pra página de login

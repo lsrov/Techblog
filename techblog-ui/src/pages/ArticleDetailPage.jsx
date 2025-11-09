@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { apiFetch, isLoggedIn } from '../services/apiService';
 
 // Componente que mostra um comentário
+// Este é um componente "burro" (dumb component), ele só recebe dados ('comment') e exibe.
 function CommentCard({ comment }) {
     // Formata a data no padrão brasileiro
     const formattedDate = new Date(comment.createdAt).toLocaleDateString('pt-BR', {
@@ -11,7 +12,7 @@ function CommentCard({ comment }) {
         year: 'numeric'
     });
 
-    // Mostra o comentário na tela
+    // Mostra o comentário na tela - retorno para HTML
     return (
         <div className="comment-card">
             {/* Imagem do autor, se bem que não implementei as imagens de perfil */}
@@ -33,23 +34,25 @@ function CommentCard({ comment }) {
 // Página que mostra um artigo específico
 export function ArticleDetailPage() {
     // Todas as informações dos artigos e comentários
-    const [article, setArticle] = useState(null);
-    const [comments, setComments] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // 'article' guarda os dados do artigo, 'setArticle' é a função para atualizá-lo
+    const [article, setArticle] = useState(null); // Começa como nulo
+    const [comments, setComments] = useState([]); // Começa como lista vazia
+    const [loading, setLoading] = useState(true); // Começa como carregando
     const [error, setError] = useState(null);
     const { id } = useParams();
     const [newComment, setNewComment] = useState(''); 
     const [submitError, setSubmitError] = useState(null); 
     
-    // Para chegar se o usuário está logado
+    // Para checar se o usuário está logado
     const userIsLoggedIn = isLoggedIn();
 
     // Busca os dados do artigo quando a página carrega
     useEffect(() => {
+        // Usa async para usar o await 
         const fetchArticleData = async () => {
             setLoading(true);
             try {
-                // Busca o artigo
+                // Busca o artigo e o 'await' pausa a função até o 'apiFetch' (chamada à API) terminar
                 const articleResponse = await apiFetch(`/articles/${id}`);
                 if (!articleResponse.ok) {
                     throw new Error('Artigo não encontrado');

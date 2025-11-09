@@ -35,6 +35,9 @@ public class DataSeeder {
             if (userRepository.findByEmail("admin@techblog.com").isEmpty()) {
                 // Mudar essa senha depois pq tá muito simples
                 User admin = new User(); // jeito mais simples de criar, sem usar builder
+                // Mas, quais são os benefícios do builder?
+                // Dá pra criar objetos imutáveis, evitar erros com muitos parâmetros,
+                // e deixar o códigoi mais legível
                 admin.setName("Admin TechBlog");
                 admin.setEmail("admin@techblog.com");
                 admin.setPassword(passwordEncoder.encode("123456")); 
@@ -45,14 +48,14 @@ public class DataSeeder {
 
             // Checa se já tem artigos no banco
             // Se tiver, não precisa fazer nada
-            if (articleRepository.count() > 0) {
+            if (articleRepository.count() > 0) { // Não sei se esse if ficou eficiente
                 System.out.println("==> Artigos já existem no banco!");
                 return;
             }
 
             System.out.println("==> Colocando os artigos do arquivo JSON...");
             
-            // Esse ObjectMapper ajuda a ler o JSON
+            // Esse ObjectMapper ajuda a ler o JSON e transforma em objeto
             ObjectMapper mapper = new ObjectMapper();
             TypeReference<List<Map<String, Object>>> tipoLista = new TypeReference<>() {};
             
@@ -120,6 +123,7 @@ public class DataSeeder {
                 // Se der algum erro, mostra na tela
                 System.out.println("==> ERRO!! Algo deu errado: " + erro.getMessage());
                 erro.printStackTrace(); // isso ajuda a ver o erro todo
+                // o printStackTrace mostra as chamadas que levaram ao erro
             }
         };
     }

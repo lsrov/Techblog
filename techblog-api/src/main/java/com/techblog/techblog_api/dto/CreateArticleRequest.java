@@ -11,5 +11,4 @@ public class CreateArticleRequest {
     private String imageUrl; // Imagem
     private List<String> tags; // Tags do artigo
     
-    // TODO: Validações?
 }

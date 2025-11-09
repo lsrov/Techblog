@@ -24,10 +24,11 @@ public class Article {
 
     // Identificador único do artigo
     @Id // Chave primária
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Significa que o próprio banco gera o id
     private Long id;
 
     // Título do artigo (não pode ser nulo)
+        // Acaba que eu já "fiz" aquela validação que queria fazer no DTO
     @Column(nullable = false)
     private String title;
 
@@ -51,11 +52,14 @@ public class Article {
     private User author;
 
     // Tags do artigo
+    // Nesse caso, ManyToMany precisa de uma tabela intermediária (essa article_tags)
     @ManyToMany(cascade = { CascadeType.MERGE }) // Um artigo -> várias tags; Várias tags -> vários artigos
+    // O CascadeType.MERGE serve para quando eu atualizar o artigo, as tags associadas também
     @JoinTable( // Essa tabela "liga" artigos com as tags
             name = "article_tags",
             joinColumns = @JoinColumn(name = "article_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
+            // inverseJoinColumns é a coluna dos artigos que estão associados às tags
     )
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
